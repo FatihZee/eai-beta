@@ -1,0 +1,25 @@
+# fly.toml app configuration file generated for eaireviewservice on 2025-05-28T21:09:04+07:00
+#
+# Docs: https://fly.io/docs/reference/configuration/
+#
+
+app = "eaireviewservice"
+primary_region = "sin"
+
+[build]
+
+[env]
+  PORT = "8080"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_start_machines = true
+  auto_stop_machines = true  # ← Perbaikan di sini
+  min_machines_running = 1
+  processes = ["app"]
+
+[[vm]]
+  memory = "1gb"
+  cpu_kind = "shared"
+  cpus = 1
