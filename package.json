@@ -12,6 +12,7 @@
   "type": "commonjs",
   "dependencies": {
     "@apollo/server": "^4.12.1",
+    "@google/genai": "^1.1.0",
     "@graphql-tools/merge": "^9.0.24",
     "body-parser": "^2.2.0",
     "cors": "^2.8.5",

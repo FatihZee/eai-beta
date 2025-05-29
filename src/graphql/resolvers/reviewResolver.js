@@ -1,4 +1,5 @@
 const Review = require('../../models/review');
+const { analyzeSentiment } = require('../../services/geminiService');
 
 module.exports = {
   Query: {
@@ -11,13 +12,24 @@ module.exports = {
   },
   Mutation: {
     createReview: async (_, { input }) => {
-      return await Review.create(input);
+      const sentiment = await analyzeSentiment(input.comment || "");
+      return await Review.create({
+        ...input,
+        sentiment,
+      });
     },
+
     updateReview: async (_, { id, input }) => {
       const review = await Review.findByPk(id);
       if (!review) throw new Error('Review not found');
-      return await review.update(input);
+
+      const sentiment = await analyzeSentiment(input.comment || "");
+      return await review.update({
+        ...input,
+        sentiment,
+      });
     },
+
     deleteReview: async (_, { id }) => {
       const review = await Review.findByPk(id);
       if (!review) throw new Error('Review not found');

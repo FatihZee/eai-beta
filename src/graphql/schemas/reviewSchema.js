@@ -19,7 +19,6 @@ module.exports = gql`
     order_id: Int!
     rating: Int!
     comment: String
-    sentiment: String
   }
 
   type Query {
