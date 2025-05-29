@@ -1,4 +1,7 @@
-# 1. CREATE REVIEW - Membuat review baru
+# 📄 QUERY.md – Review GraphQL API
+
+## 1. ➕ CREATE REVIEW – Membuat Review Baru
+```graphql
 mutation CreateReview {
   createReview(input: {
     user_id: 1
@@ -19,8 +22,11 @@ mutation CreateReview {
     updated_at
   }
 }
+````
 
-# 2. CREATE REVIEW KEDUA - Untuk testing get all
+## 2. ➕ CREATE SECOND REVIEW – Untuk Testing Get All
+
+```graphql
 mutation CreateSecondReview {
   createReview(input: {
     user_id: 2
@@ -41,8 +47,11 @@ mutation CreateSecondReview {
     updated_at
   }
 }
+```
 
-# 3. GET ALL REVIEWS - Mengambil semua review
+## 3. 📥 GET ALL REVIEWS – Mengambil Semua Review
+
+```graphql
 query GetAllReviews {
   getReviews {
     id
@@ -56,9 +65,11 @@ query GetAllReviews {
     updated_at
   }
 }
+```
 
-# 4. GET SINGLE REVIEW - Mengambil review berdasarkan ID
-# Ganti angka 1 dengan ID yang sebenarnya dari hasil create
+## 4. 🔍 GET SINGLE REVIEW – Berdasarkan ID
+
+```graphql
 query GetSingleReview {
   getReview(id: 1) {
     id
@@ -72,9 +83,11 @@ query GetSingleReview {
     updated_at
   }
 }
+```
 
-# 5. UPDATE REVIEW - Mengupdate review yang sudah ada
-# Ganti angka 1 dengan ID yang sebenarnya dari hasil create
+## 5. ✏️ UPDATE REVIEW – Mengubah Review yang Ada
+
+```graphql
 mutation UpdateReview {
   updateReview(id: 1, input: {
     user_id: 1
@@ -95,14 +108,19 @@ mutation UpdateReview {
     updated_at
   }
 }
+```
 
-# 6. DELETE REVIEW - Menghapus review
-# Ganti angka 2 dengan ID yang sebenarnya dari hasil create
+## 6. ❌ DELETE REVIEW – Menghapus Review Berdasarkan ID
+
+```graphql
 mutation DeleteReview {
   deleteReview(id: 2)
 }
+```
 
-# 7. VERIFY DELETE - Cek apakah review sudah terhapus
+## 7. ✅ VERIFY DELETE – Pastikan Review Sudah Terhapus
+
+```graphql
 query VerifyDelete {
   getReviews {
     id
@@ -116,8 +134,11 @@ query VerifyDelete {
     updated_at
   }
 }
+```
 
-# 8. TEST ERROR HANDLING - Coba get review yang tidak ada
+## 8. ⚠️ ERROR HANDLING – Get Review yang Tidak Ada
+
+```graphql
 query GetNonExistentReview {
   getReview(id: 999) {
     id
@@ -131,8 +152,11 @@ query GetNonExistentReview {
     updated_at
   }
 }
+```
 
-# 9. TEST ERROR HANDLING - Coba update review yang tidak ada
+## 9. ⚠️ ERROR HANDLING – Update Review yang Tidak Ada
+
+```graphql
 mutation UpdateNonExistentReview {
   updateReview(id: 999, input: {
     user_id: 1
@@ -147,8 +171,12 @@ mutation UpdateNonExistentReview {
     comment
   }
 }
+```
 
-# 10. TEST ERROR HANDLING - Coba delete review yang tidak ada
+## 10. ⚠️ ERROR HANDLING – Delete Review yang Tidak Ada
+
+```graphql
 mutation DeleteNonExistentReview {
   deleteReview(id: 999)
 }
+```
